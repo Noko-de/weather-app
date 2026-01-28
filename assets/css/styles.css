@@ -246,6 +246,12 @@ body {
     color: #ffffff;
 
 }
+
+h1{
+    font-family: 'Roboto', Arial, sans-serif;
+    font-weight: 700;
+    font-size:54px 
+}
 .login-navbar, .search-navbar{
     background-color: #00000000;
     color: white;

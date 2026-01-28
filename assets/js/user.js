@@ -190,14 +190,14 @@ function obtenerHistorial() {
 
 
 const ciudadesSlider = [
-    "Santiago",
-    "Buenos Aires",
+    "Santiago,CL",
+    "Buenos Aires,AR",
     "Madrid",
     "New York",
     "Paris",
     "Tokyo",
     "Londres",
-    "Roma"
+    "Roma,IT",
 ];
 
 const imagenesClima = {
@@ -252,6 +252,10 @@ function mostrarClimaSlider(data, card) {
     ciudadSpan.textContent = data.name;
     climaSpan.textContent = data.weather[0].description;
     tempSpan.textContent = `${Math.round(data.main.temp)}°`;
+
+    card.addEventListener("click", () => {
+        obtenerClima(data.name);
+    });
 }
 
 window.addEventListener("DOMContentLoaded", () => {
