@@ -27,7 +27,7 @@ const tempSlider = document.getElementById("temp-slider");
 loginBtn.addEventListener("click", () => {
     const usuario = usuarioInput.value.trim();
     if (usuario === "") {
-        alert("Ingresá tu nombre");
+        alert("Ingresa tu nombre");
         return;
     }
 
@@ -42,7 +42,7 @@ loginBtn.addEventListener("click", () => {
     loginNavbar.classList.add("d-none");
     searchNavbar.classList.remove("d-none");
 
-    saludo.textContent = `Hola ${usuario}, ingresá una ciudad`;
+    saludo.textContent = `Hola ${usuario}, ingresa una ciudad`;
 });
 
 
@@ -64,7 +64,7 @@ window.addEventListener("DOMContentLoaded", () => {
     if (usuario) {
         loginNavbar.classList.add("d-none");
         searchNavbar.classList.remove("d-none");
-        saludo.textContent = `Hola, ${usuario}, ingresá una ciudad`;
+        saludo.textContent = `Hola, ${usuario}, ingresa una ciudad`;
     }
 });
 
@@ -92,7 +92,6 @@ async function obtenerClima(ciudad) {
         const data = await response.json();
         mostrarClima(data);
 
-        // Guardar ciudad en el historial del usuario
         guardarCiudad(data);
 
     } catch (error) {
@@ -130,14 +129,14 @@ function guardarCiudad(data) {
         main: data.weather[0].main
     };
 
-    // evitar duplicados
+    /* Con esto evito duplicados */
     usuarios[usuario] = usuarios[usuario].filter(
         c => c.nombre !== nuevaCiudad.nombre
     );
 
     usuarios[usuario].unshift(nuevaCiudad);
 
-    if (usuarios[usuario].length > 5) {
+    if (usuarios[usuario].length > 4) {
         usuarios[usuario].pop();
     }
 
@@ -264,13 +263,12 @@ window.addEventListener("DOMContentLoaded", () => {
     cargarSlider();
     renderHistorial();
 
-    // Ciudad por defecto al iniciar
     obtenerClima("Santiago");
 
     if (usuario) {
         loginNavbar.classList.add("d-none");
         searchNavbar.classList.remove("d-none");
-        saludo.textContent = `Hola, ${usuario}, ingresá una ciudad`;
+        saludo.textContent = `Hola, ${usuario}, ingresa una ciudad`;
     }
 });
 
